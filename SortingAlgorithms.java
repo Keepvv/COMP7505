@@ -173,10 +173,10 @@ public class SortingAlgorithms {
                 }
                
                 swap(input,leftIndex,rightIndex);
-                if (input[leftIndex] == pivot){
+                if (input[leftIndex].compareTo(pivot) ==0){
                     rightIndex--;
                 }
-                if (input[rightIndex] == pivot){
+                if (input[rightIndex].compareTo(pivot) ==0){
                     leftIndex++;
                 }
             }else {
@@ -192,10 +192,10 @@ public class SortingAlgorithms {
                 }
                
                 swap(input,leftIndex,rightIndex);
-                if (input[leftIndex] == pivot){
+                if (input[leftIndex].compareTo(pivot) ==0){
                     rightIndex--;
                 }
-                if (input[rightIndex] == pivot){
+                if (input[rightIndex].compareTo(pivot) ==0){
                     leftIndex++;
                 }
             }
