@@ -1,6 +1,5 @@
 public class SortingAlgorithms {
-
-    /**
+ /**
      * Sorts the given array using the selection sort algorithm.
      * This should modify the array in-place.
      *
@@ -152,42 +151,31 @@ public class SortingAlgorithms {
         qSort(input,0,input.length-1,reversed);
     }
 
+
     private static <T extends Comparable> void qSort(
             T[] input, int startIndex, int endIndex,boolean reversed){
-        if (endIndex <= startIndex){
-            return;
-        }
-
-        int pivotIndex = partition(input,startIndex,endIndex,reversed);
-        qSort(input,startIndex,pivotIndex -1,reversed);
-        qSort(input,pivotIndex+1, endIndex,reversed);
-
-    }
-
-    private static <T extends Comparable> int partition(
-            T[] input, int startIndex, int endIndex,boolean reversed){
-        T pivot = input[startIndex];
+        T pivot = input[(endIndex+startIndex) /2];
         int leftIndex = startIndex;
         int rightIndex = endIndex;
 
         while (leftIndex <rightIndex){
             if (reversed){
-                while ((input[rightIndex].compareTo(pivot) <= 0)
+                while ((input[rightIndex].compareTo(pivot) < 0)
                         && (leftIndex <rightIndex)){
                     rightIndex --;
                 }
 
-                while ((input[leftIndex].compareTo(pivot)>= 0) && (leftIndex <rightIndex)){
+                while ((input[leftIndex].compareTo(pivot)> 0) && (leftIndex <rightIndex)){
                     leftIndex++;
                 }
                 swap(input,leftIndex,rightIndex);
             }else {
-                while ((input[rightIndex].compareTo(pivot) >= 0)
+                while ((input[rightIndex].compareTo(pivot) > 0)
                         && (leftIndex <rightIndex)){
                     rightIndex --;
                 }
 
-                while ((input[leftIndex].compareTo(pivot)<= 0) && (leftIndex <rightIndex)){
+                while ((input[leftIndex].compareTo(pivot)< 0) && (leftIndex <rightIndex)){
                     leftIndex++;
                 }
                 swap(input,leftIndex,rightIndex);
@@ -195,8 +183,17 @@ public class SortingAlgorithms {
 
 
         }
-        swap(input,startIndex,leftIndex);
-        return leftIndex;
+        if (leftIndex == rightIndex){
+            leftIndex++;
+            rightIndex--;
+        }
+        if (startIndex <rightIndex){
+            qSort(input,startIndex,rightIndex,reversed);
+        }
+
+        if (endIndex > leftIndex){
+            qSort(input,leftIndex,endIndex,reversed);
+        }
     }
 
     private static  <T extends Comparable> void swap(T[] input, int i, int j){
