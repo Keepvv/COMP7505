@@ -161,25 +161,43 @@ public class SortingAlgorithms {
 
         while (leftIndex <rightIndex){
             if (reversed){
-                while ((input[rightIndex].compareTo(pivot) < 0)
-                        && (leftIndex <rightIndex)){
+                while (input[rightIndex].compareTo(pivot) < 0){
                     rightIndex --;
                 }
 
-                while ((input[leftIndex].compareTo(pivot)> 0) && (leftIndex <rightIndex)){
+                while (input[leftIndex].compareTo(pivot)> 0){
                     leftIndex++;
                 }
+                if (leftIndex >= rightIndex){
+                    break;
+                }
+               
                 swap(input,leftIndex,rightIndex);
+                if (input[leftIndex] == pivot){
+                    rightIndex--;
+                }
+                if (input[rightIndex] == pivot){
+                    leftIndex++;
+                }
             }else {
-                while ((input[rightIndex].compareTo(pivot) > 0)
-                        && (leftIndex <rightIndex)){
+                while (input[rightIndex].compareTo(pivot) > 0){
                     rightIndex --;
                 }
 
-                while ((input[leftIndex].compareTo(pivot)< 0) && (leftIndex <rightIndex)){
+                while (input[leftIndex].compareTo(pivot) < 0){
                     leftIndex++;
                 }
+                if (leftIndex >= rightIndex){
+                    break;
+                }
+               
                 swap(input,leftIndex,rightIndex);
+                if (input[leftIndex] == pivot){
+                    rightIndex--;
+                }
+                if (input[rightIndex] == pivot){
+                    leftIndex++;
+                }
             }
 
 
