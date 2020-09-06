@@ -1,16 +1,4 @@
-package ass2;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 public class SortingAlgorithms {
-
-    public static void main(String[] args) {
-
-        Integer[] unsorted = new Integer[]{5, 10, 9, 2, 1, 4, 0};
-        insertionSort(unsorted, false);
-        Arrays.stream(unsorted).forEach(System.out::println);
-    }
 
     /**
      * Sorts the given array using the selection sort algorithm.
